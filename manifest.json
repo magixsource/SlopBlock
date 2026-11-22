@@ -35,15 +35,9 @@
       "run_at": "document_end"
     }
   ],
-  "web_accessible_resources": [{
-    "resources": [
-      "data/*.json"
-    ],
-    "matches": [
-      "*://*/*"
-    ]
-  }],
   "host_permissions": [
-    "http://*/*", "https://*/*"
+    "*://*.bilibili.com/*",
+    "https://api.bilibili.com/*",
+    "https://api.vc.bilibili.com/*"
   ]
 }
