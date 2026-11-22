@@ -16,11 +16,19 @@
 
 ### 方式一：从 GitHub Release 下载（推荐给普通用户）
 
-在仓库的 [Releases](https://github.com/magixsource/SlopBlock/releases) 页面下载最新的 `SlopBlock-<版本>.zip`，解压后：
+在仓库的 [Releases](https://github.com/magixsource/SlopBlock/releases) 页面下载最新的 `SlopBlock-<版本>.zip`，然后：
 
-1. 打开 `chrome://extensions`
-2. 开启右上角「开发者模式」
-3. 点击「加载已解压的扩展程序」，选择**解压后包含 `manifest.json` 的那个文件夹**
+1. 解压到一个**固定文件夹**（不要删除，Chrome 会一直从这个目录加载扩展）
+2. 打开 `chrome://extensions`
+3. 开启右上角「开发者模式」
+4. 点击「加载已解压的扩展程序」，选择**解压后包含 `manifest.json` 的那个文件夹**
+5. 可在工具栏的扩展菜单里把 SlopBlock 固定显示
+
+更新时，下载新版 ZIP 解压到新文件夹，重复第 4 步加载，再删除或禁用旧版本即可。
+
+> Chrome 133+ 下，以「已解压」方式加载的扩展必须保持开发者模式开启，否则会被禁用。
+
+English: extract the ZIP to a permanent folder, open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and select the folder containing `manifest.json`.
 
 > 为什么不提供 `.crx`：从 Chrome 75 起，普通桌面版 Chrome 只接受 Chrome Web Store 签名的 CRX，自制的 CRX 会报 `CRX_REQUIRED_PROOF_MISSING`，用户下载了也装不上。ZIP + 加载已解压是当前最可靠的分发方式。
 

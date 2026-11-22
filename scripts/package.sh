@@ -15,7 +15,6 @@ zip -r -q "$OUTPUT" \
   background_script.js \
   popup.html popup.js \
   options.html options.js \
-  INSTALL.txt \
   js/slopblock.js \
   data/data.json \
   images/icon_16.png images/icon_32.png images/icon_48.png images/icon_128.png \
