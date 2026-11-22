@@ -14,15 +14,35 @@
 
 项目是纯静态的 Manifest V3 扩展，没有构建步骤。
 
+### 方式一：从 GitHub Release 下载（推荐给普通用户）
+
+在仓库的 [Releases](https://github.com/magixsource/SlopBlock/releases) 页面下载最新的 `SlopBlock-<版本>.zip`，解压后：
+
 1. 打开 `chrome://extensions`
 2. 开启右上角「开发者模式」
-3. 点击「加载已解压的扩展程序」，选择本项目的根目录（包含 `manifest.json` 的那一层）
+3. 点击「加载已解压的扩展程序」，选择**解压后包含 `manifest.json` 的那个文件夹**
 
-也可以先克隆仓库再加载：
+> 为什么不提供 `.crx`：从 Chrome 75 起，普通桌面版 Chrome 只接受 Chrome Web Store 签名的 CRX，自制的 CRX 会报 `CRX_REQUIRED_PROOF_MISSING`，用户下载了也装不上。ZIP + 加载已解压是当前最可靠的分发方式。
+
+### 方式二：从源码加载
+
+先克隆仓库再加载：
 
 ```bash
 git clone git@github.com:magixsource/SlopBlock.git
 ```
+
+然后在 `chrome://extensions` 开启开发者模式，选择项目根目录（包含 `manifest.json` 的那一层）。
+
+### 打包发布包
+
+维护者可以用脚本生成发布用 ZIP：
+
+```bash
+bash scripts/package.sh
+```
+
+GitHub Actions 在推送 `v*` 标签时会自动打包并把 ZIP 附加到 Release 上。
 
 ## 使用
 
