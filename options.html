@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>SlopBlock 设置</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 32px 20px 60px;
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f6f7f8; color: #18191c;
+        }
+        .page { max-width: 720px; margin: 0 auto; }
+        .header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .logo { width: 40px; height: 40px; border-radius: 10px; }
+        h1 { font-size: 20px; margin: 0 0 2px; }
+        .sub { font-size: 13px; color: #9499a0; margin: 0; }
+        .card {
+            background: #fff; border: 1px solid #e3e5e7; border-radius: 10px;
+            padding: 20px; margin-bottom: 16px;
+        }
+        h2 { font-size: 15px; margin: 0 0 12px; }
+        .meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #61666d; margin-bottom: 14px; }
+        .meta b { color: #00aeec; font-weight: 600; }
+        textarea {
+            width: 100%; height: 150px; padding: 10px; resize: vertical;
+            border: 1px solid #e3e5e7; border-radius: 6px; outline: none;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 12px; line-height: 1.6; color: #18191c;
+        }
+        textarea:focus { border-color: #00aeec; }
+        .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+        input[type=text] {
+            padding: 7px 10px; border: 1px solid #e3e5e7; border-radius: 6px;
+            font-size: 13px; outline: none; width: 180px;
+        }
+        input[type=text]:focus { border-color: #00aeec; }
+        button {
+            border: 0; border-radius: 6px; padding: 8px 14px;
+            font-size: 13px; cursor: pointer;
+        }
+        .primary { background: #00aeec; color: #fff; }
+        .primary:hover { background: #009acd; }
+        .ghost { background: #f1f2f3; color: #61666d; }
+        .ghost:hover { background: #e3e5e7; }
+        .note { margin-top: 12px; font-size: 12px; line-height: 1.7; color: #9499a0; }
+        .status { margin-top: 12px; font-size: 13px; min-height: 20px; }
+        .status.ok { color: #2e7d32; }
+        .status.err { color: #c62828; }
+        .toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #61666d; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #18191c; color: #e3e5e7; }
+            .card { background: #23262b; border-color: #2b2e33; }
+            textarea, input[type=text] { background: #18191c; color: #e3e5e7; border-color: #2b2e33; }
+            .ghost { background: #2b2e33; color: #e3e5e7; }
+            .sub, .note { color: #9499a0; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <img class="logo" src="images/icon_32.png" alt="">
+        <div>
+            <h1>SlopBlock 设置</h1>
+            <p class="sub">维护可共享的公共屏蔽清单</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>公共屏蔽清单</h2>
+        <div class="meta">
+            <span>当前来源：<b id="source">内置</b></span>
+            <span>当前条数：<b id="count">0</b></span>
+            <span>版本：<b id="version">-</b></span>
+        </div>
+
+        <textarea id="listText" spellcheck="false" placeholder="每行一个 UP 主 ID，用分号 / 逗号 / 换行分隔都可以。&#10;也可以粘贴 data.json 格式（含 bili.block / bili.unblock / version）的 JSON。"></textarea>
+
+        <div class="row">
+            <label class="toggle">版本标记 <input type="text" id="versionText" placeholder="可选，例如 2026-11-21"></label>
+            <button class="primary" id="saveBtn">保存并应用</button>
+            <button class="ghost" id="fileBtn">从文件导入</button>
+            <button class="ghost" id="exportBtn">导出当前清单</button>
+            <button class="ghost" id="resetBtn">恢复内置清单</button>
+            <input type="file" id="fileInput" accept=".json,.txt" hidden>
+        </div>
+
+        <p class="note">
+            这里维护的是公共清单，可以自己维护，也可以从别人分享的 JSON 文件导入。<br>
+            你通过右键或弹窗添加的个人 ID 属于另一份清单，不会被这里覆盖；你移除过的公共 ID 也不会因为更新而重新出现。
+        </p>
+        <div class="status" id="status"></div>
+    </div>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
