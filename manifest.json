@@ -1,6 +1,6 @@
 {
   "name": "SlopBlock",
-  "version": "1.0",
+  "version": "1.0.0",
   "manifest_version": 3,
   "description": "在B站按UP主屏蔽视频",
   "icons": {
